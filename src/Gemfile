@@ -5,3 +5,7 @@ gem 'bormashino', '~> 0.1.9'
 gem 'json_pure', '~> 2.6', '>= 2.6.1'
 gem 'ruby2_keywords', '0.0.4'
 gem 'sinatra'
+
+gem 'sequel', '~> 5.60'
+
+gem 'rspec', '~> 3.11'
