@@ -3,4 +3,6 @@
 load 'bormashino/tasks/bormashino.rake'
 
 desc 'build ruby.wasm with packed app'
-task default: 'bormashino:pack'
+task :default do
+  Rake::Task['bormashino:pack'].invoke('--mapdir /gem::./gem/')
+end

@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "bormashino": "^0.1.9",
-    "sql.js": "^1.8.0"
+    "bormashino-sequel-sqljs-adapter": "file:./npm"
   }
 }

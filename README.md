@@ -1,37 +1,58 @@
-# bormashino-app-template
+# bormashino-sequel-sqljs-adapter
 
-template repository of apps with Bormaŝino / SPAs written in Ruby
+SQL.JS adapter for Sequel on browser with Bormaŝino / ruby.wasm
 
 ## Demo
 
-https://bormashino-app-template.vercel.app
-
-## Prerequisites
-
-You need:
-
-- rbenv + ruby-build
-- npm
+https://bormashino-sequel-sqljs-adapter.vercel.app/
 
 ## Quickstart
 
-in the cloned dir
+app.js
 
-```bash
-cat .ruby-version | rbenv install -
-gem install foreman
-bundle install
-(cd src && bundle install)
-npm install
-./bin/dev
+```js
+import initSqlJs from 'sql.js'
+import sqlWasm from 'url:../node_modules/sql.js/dist/sql-wasm.wasm'
+import { dbWrapper } from 'bormashino-sequel-sqljs-adapter'
+const SQL = await initSqlJs({ locateFile: () => sqlWasm })
+const db = new SQL.Database()
+window.database = dbWrapper(db)
 ```
 
-You can see the app at http://localhost:5000/.
-App codes are basically in `src/`.
+app.rb
 
-## Deployment
+```ruby
+require 'sequel'
+require 'bormashino_sequel_sqljs_adapter'
+# sqljs://<name of dbWrapper instance under window object>
+@db = Sequel.connect('sqljs://database')
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkeyasuda%2Fbormashino-app-template)
+@db.create_table :items do
+  primary_key :id
+  String :name
+  Float :price
+end
 
-"Vercel for GitHub" works on this project.
-See https://vercel.com/docs/concepts/git/vercel-for-github
+items = @db[:items]
+```
+
+## Release
+
+### rubygem
+
+```bash
+$ cd gem
+$ bundle exec rake build
+$ gem push pkg/bormashino-sequel-sqljs-adapter-XXX.gem
+```
+
+### npm package
+
+```bash
+$ cd npm
+$ npm publish
+```
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

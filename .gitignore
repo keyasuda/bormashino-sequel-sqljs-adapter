@@ -47,3 +47,5 @@ config/environments/*.local.yml
 /rubies
 /wasi-vfs
 .vercel
+npm/node_modules
+gem/pkg

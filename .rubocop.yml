@@ -7,6 +7,8 @@ AllCops:
     - 'src/bundle/**/*'
     - 'node_modules/**/*'
     - 'rubies/**/*'
+    - 'npm/node_modules'
+    - 'gem/pkg'
 
 RSpec/InstanceVariable:
   Enabled: false
@@ -51,4 +53,7 @@ Style/PercentLiteralDelimiters:
   Enabled: false
 
 Rails/NegateInclude:
+  Enabled: false
+
+Rails/SkipsModelValidations:
   Enabled: false

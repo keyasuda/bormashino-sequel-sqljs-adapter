@@ -1,0 +1,25 @@
+{
+  "name": "bormashino-sequel-sqljs-adapter",
+  "description": "SQL.JS adapter for Sequel on browser with Bormaŝino / ruby.wasm",
+  "homepage": "https://github.com/keyasuda/bormashino-sequel-sqljs-adapter",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --notify src/",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "Kenichiro Yasuda",
+  "license": "MIT",
+  "repository": "git://github.com/keyasuda/bormashino-sequel-sqljs-adapter.git",
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "node-notifier": "^10.0.1"
+  },
+  "dependencies": {
+    "bormashino": "^0.1.9",
+    "sql.js": "^1.8.0"
+  }
+}

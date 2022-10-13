@@ -1,4 +1,5 @@
 require_relative 'shared/sqljs'
+Sequel.single_threaded = true
 
 module Sequel
   module Sqljs

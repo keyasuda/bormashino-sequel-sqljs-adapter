@@ -1,25 +1,11 @@
 require 'sinatra/base'
+require 'sequel'
+require 'bormashino_sequel_sqljs_adapter'
 
 class App < Sinatra::Base
   set :protection, false
 
   get '/' do
-    # rubocop:disable Lint/RedundantRequireStatement?
-    require 'thread'
-    class Thread
-      @@current = {}
-      def @@current.status
-        'running'
-      end
-
-      def self.current
-        @@current
-      end
-    end
-    # rubocop:enable Lint/RedundantRequireStatement
-    require 'sequel'
-    require_relative 'sqljs'
-    Sequel.single_threaded = true
     p JS.global[:database].call(:exec, 'select * from test;').to_rb
     @db = Sequel.connect('sqljs://database')
     p @db
@@ -43,9 +29,9 @@ class App < Sinatra::Base
     p items.count
 
     require 'rspec/core'
-    # ret = RSpec::Core::Runner.run(['src/spec/sqljs_spec.rb:527'])
     @err = StringIO.new('')
     @out = StringIO.new('')
+    # ret = RSpec::Core::Runner.run(['src/spec/sqljs_spec.rb:527'], @err, @out)
     @ret = RSpec::Core::Runner.run(['src/spec/sqljs_spec.rb'], @err, @out)
 
     erb :index
