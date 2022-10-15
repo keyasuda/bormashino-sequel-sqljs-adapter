@@ -1,0 +1,53 @@
+name: rspec
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
+  schedule:
+    - cron: '20 15 * * 1'
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.0-preview1
+          bundler-cache: true
+
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Set up Chrome
+        uses: keyasuda/setup-chrome@latest
+
+      - name: npm install on npm/
+        run: (cd npm && npm update)
+
+      - name: setup test-app
+        run: |
+          npm update
+          bundle update
+          (cd src && bundle update)
+          bundle exec rake
+
+      - name: test
+        run: |
+          nohup npm run dev &
+          sleep 15
+          bundle exec rspec
+
+      - name: Upload built artifact
+        uses: actions/upload-artifact@v3.1.0
+        if: failure()
+        with:
+          name: built
+          path: screenshot
