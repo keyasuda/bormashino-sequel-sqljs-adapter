@@ -57,3 +57,30 @@ Rails/NegateInclude:
 
 Rails/SkipsModelValidations:
   Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/MultipleDescribes:
+  Enabled: false
+
+Lint/EmptyBlock:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
