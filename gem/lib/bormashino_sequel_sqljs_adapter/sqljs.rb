@@ -241,7 +241,7 @@ module Sequel
               result = conn.exec(sql)
               # fetch table names
               tables = conn.exec("select name from sqlite_master where type='table'")[:result].first['values']
-              target_table = tables.map(&:first).find { |n| sql.include?("\`#{n}\`") }
+              target_table = tables.map(&:first).find { |n| sql.include?("FROM \`#{n}\`") }
               if target_table
                 types_result = conn.exec("pragma table_info('#{target_table}')")
                 result[:types] = types_result[:result].first['values'].to_h { |e| [e[1], e[2]] }
