@@ -2,13 +2,20 @@
 
 [![rspec](https://github.com/keyasuda/bormashino-sequel-sqljs-adapter/actions/workflows/rspec.yml/badge.svg)](https://github.com/keyasuda/bormashino-sequel-sqljs-adapter/actions/workflows/rspec.yml)
 
-SQL.JS adapter for Sequel on browser with Bormaŝino / ruby.wasm
+[SQL.JS](https://github.com/sql-js/sql.js/) adapter for [Sequel](https://github.com/jeremyevans/sequel) on browser with [Bormaŝino](https://github.com/keyasuda/bormashino) / [ruby.wasm](https://github.com/ruby/ruby.wasm)
 
 ## Demo
 
 https://bormashino-sequel-sqljs-adapter.vercel.app/
 
 ## Quickstart
+
+on typical [bormashino-app-template](https://github.com/keyasuda/bormashino-app-template) project
+
+```bash
+$ npm i bormashino-sequel-sqljs-adapter
+$ (cd src && bundle add bormashino-sequel-sqljs-adapter)
+```
 
 app.js
 
