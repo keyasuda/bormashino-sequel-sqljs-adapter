@@ -476,21 +476,17 @@ module Sequel
         a
       end
 
+      DELETE_SQL_SYMS = {
+        'RESTRICT' => :restrict,
+        'CASCADE' => :cascade,
+        'SET NULL' => :set_null,
+        'SET DEFAULT' => :set_default,
+        'NO ACTION' => :no_action,
+      }.freeze
       # Does the reverse of on_delete_clause, eg. converts strings like +'SET NULL'+
       # to symbols +:set_null+.
       def on_delete_sql_to_sym(str)
-        case str
-        when 'RESTRICT'
-          :restrict
-        when 'CASCADE'
-          :cascade
-        when 'SET NULL'
-          :set_null
-        when 'SET DEFAULT'
-          :set_default
-        when 'NO ACTION'
-          :no_action
-        end
+        DELETE_SQL_SYMS[str]
       end
 
       # Parse the output of the table_info pragma
@@ -574,13 +570,27 @@ module Sequel
       EXTRACT_MAP.each_value(&:freeze)
 
       Dataset.def_sql_method(self, :delete,
-                             [['if db.sqlite_version >= 33500', %w[with delete from where returning]], ['elsif db.sqlite_version >= 30803', %w[with delete from where]], ['else', %w[delete from where]]])
+                             [['if db.sqlite_version >= 33500',
+                               %w[with delete from where returning]],
+                              ['elsif db.sqlite_version >= 30803', %w[with delete from where]],
+                              ['else', %w[delete from where]]])
       Dataset.def_sql_method(self, :insert,
-                             [['if db.sqlite_version >= 33500', %w[with insert conflict into columns values on_conflict returning]], ['elsif db.sqlite_version >= 30803', %w[with insert conflict into columns values on_conflict]], ['else', %w[insert conflict into columns values]]])
+                             [['if db.sqlite_version >= 33500',
+                               %w[with insert conflict into columns values on_conflict returning]],
+                              ['elsif db.sqlite_version >= 30803', %w[with insert conflict into columns values on_conflict]],
+                              ['else', %w[insert conflict into columns values]]])
       Dataset.def_sql_method(self, :select,
-                             [['if opts[:values]', %w[with values compounds]], ['else', %w[with select distinct columns from join where group having window compounds order limit lock]]])
+                             [['if opts[:values]',
+                               %w[with values compounds]],
+                              ['else', %w[with select distinct columns from join where group having window compounds order limit lock]]])
       Dataset.def_sql_method(self, :update,
-                             [['if db.sqlite_version >= 33500', %w[with update table set from where returning]], ['elsif db.sqlite_version >= 33300', %w[with update table set from where]], ['elsif db.sqlite_version >= 30803', %w[with update table set where]], ['else', %w[update table set where]]])
+                             [[
+                               'if db.sqlite_version >= 33500',
+                               %w[with update table set from where returning],
+                             ],
+                              ['elsif db.sqlite_version >= 33300', %w[with update table set from where]],
+                              ['elsif db.sqlite_version >= 30803', %w[with update table set where]],
+                              ['else', %w[update table set where]]])
 
       def cast_sql_append(sql, expr, type)
         if (type == Time) || (type == DateTime)
@@ -761,8 +771,10 @@ module Sequel
         case opts
         when Symbol, String
           unless INSERT_CONFLICT_RESOLUTIONS.include?(opts.to_s.upcase)
+            # rubocop:disable Layout/LineLength
             raise Error,
                   "Invalid symbol or string passed to Dataset#insert_conflict: #{opts.inspect}.  The allowed values are: :rollback, :abort, :fail, :ignore, or :replace"
+            # rubocop:enable Layout/LineLength
           end
 
           clone(insert_conflict: opts)

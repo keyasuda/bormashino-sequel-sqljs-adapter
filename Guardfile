@@ -8,6 +8,7 @@ end
 
 guard :rake, task: :default do
   watch(%r{src/.+})
+  watch(%r{gem/lib/.+})
 end
 
 guard :rspec, cmd: 'bundle exec rspec' do

@@ -9,7 +9,7 @@ class App < Sinatra::Base
     p JS.global[:database].call(:exec, 'select * from test;').to_rb
     @db = Sequel.connect('sqljs://database')
     p @db
-    p @db[:test].where(col1: 1).each { |r| p r }
+    p(@db[:test].where(col1: 1).each { |r| p r })
 
     @db.create_table :items do
       primary_key :id
