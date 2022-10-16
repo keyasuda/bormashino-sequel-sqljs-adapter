@@ -10,3 +10,9 @@ gem 'guard-rake', git: 'https://github.com/rubyist/guard-rake.git', ref: '313849
 gem 'guard-rspec', require: false
 gem 'guard-rubocop'
 gem 'rspec', '>= 3.0.0'
+
+gem 'capybara', '~> 3.37'
+gem 'capybara-screenshot', '~> 1.0'
+gem 'cuprite', '~> 0.14.2'
+gem 'pry', '~> 0.14.1'
+gem 'rspec-retry', '~> 0.6.2'

@@ -49,3 +49,4 @@ config/environments/*.local.yml
 .vercel
 npm/node_modules
 gem/pkg
+/screenshot/

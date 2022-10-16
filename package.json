@@ -10,7 +10,7 @@
   },
   "source": "js/index.html",
   "scripts": {
-    "dev": "parcel --dist-dir tmp/",
+    "dev": "parcel --port 5000 --dist-dir tmp/",
     "build": "bundle exec rake && parcel build --no-scope-hoist"
   },
   "dependencies": {

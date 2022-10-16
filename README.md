@@ -1,5 +1,7 @@
 # bormashino-sequel-sqljs-adapter
 
+[![rspec](https://github.com/keyasuda/bormashino-sequel-sqljs-adapter/actions/workflows/rspec.yml/badge.svg)](https://github.com/keyasuda/bormashino-sequel-sqljs-adapter/actions/workflows/rspec.yml)
+
 SQL.JS adapter for Sequel on browser with Bormaŝino / ruby.wasm
 
 ## Demo
