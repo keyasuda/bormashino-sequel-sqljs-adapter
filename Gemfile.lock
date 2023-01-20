@@ -174,10 +174,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bormashino (~> 0.1.9)
-  capybara (~> 3.37, >= 3.37.1)
+  bormashino (~> 0.1.11)
+  capybara (~> 3.38, >= 3.38.0)
   capybara-screenshot (~> 1.0, >= 1.0.26)
-  cuprite (~> 0.14.2)
+  cuprite (~> 0.14.3)
   fablicop
   guard
   guard-rake!
@@ -188,4 +188,4 @@ DEPENDENCIES
   rspec-retry (~> 0.6.2)
 
 BUNDLED WITH
-   2.4.0.dev
+   2.4.1
