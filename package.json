@@ -14,7 +14,7 @@
     "build": "bundle exec rake && parcel build --no-scope-hoist"
   },
   "dependencies": {
-    "bormashino": "^0.1.15",
+    "bormashino": "^0.2.0",
     "bormashino-sequel-sqljs-adapter": "file:./npm"
   }
 }
