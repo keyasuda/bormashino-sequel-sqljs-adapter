@@ -40,7 +40,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bormashino (~> 0.1.9)
+  bormashino (~> 0.1.11)
   json_pure (~> 2.6, >= 2.6.1)
   rspec (~> 3.11)
   ruby2_keywords (= 0.0.4)
@@ -48,4 +48,4 @@ DEPENDENCIES
   sinatra
 
 BUNDLED WITH
-   2.4.0.dev
+   2.4.1

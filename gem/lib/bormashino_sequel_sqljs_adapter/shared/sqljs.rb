@@ -1,4 +1,4 @@
-# frozen-string-literal: true
+# frozen_string_literal: true
 
 require 'sequel/adapters/utils/replace'
 require 'sequel/adapters/utils/unmodified_identifiers'

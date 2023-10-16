@@ -24,7 +24,7 @@ describe 'An SQL.JS database' do
   end
 
   it 'provides the SQLite version as an integer' do
-    expect(@db.sqlite_version).to be_kind_of(Integer)
+    expect(@db.sqlite_version).to be_a(Integer)
   end
 
   it 'supports dropping noncomposite unique constraint' do
@@ -102,7 +102,7 @@ describe 'An SQL.JS database' do
 
   it 'provides a list of existing tables' do
     @db.drop_table?(:fk)
-    expect(@db.tables).to be_kind_of(Array)
+    expect(@db.tables).to be_a(Array)
     expect(@db.tables).not_to include(:fk)
     @db.create_table!(:fk) { String :name }
     expect(@db.tables).to include(:fk)
@@ -252,19 +252,19 @@ if DB.adapter_scheme == :sqlite
       @db.create_table(:items) { Numeric :a }
       @db[:items].insert(100)
       expect(@db[:items].select_map(:a)).to eq [BigDecimal('100')]
-      expect(@db[:items].get(:a)).to be_kind_of(BigDecimal)
+      expect(@db[:items].get(:a)).to be_a(BigDecimal)
 
       @db[:items].update(a: 100.1)
       expect(@db[:items].select_map(:a)).to eq [BigDecimal('100.1')]
-      expect(@db[:items].get(:a)).to be_kind_of(BigDecimal)
+      expect(@db[:items].get(:a)).to be_a(BigDecimal)
 
       @db[:items].update(a: '100.1')
       expect(@db[:items].select_map(:a)).to eq [BigDecimal('100.1')]
-      expect(@db[:items].get(:a)).to be_kind_of(BigDecimal)
+      expect(@db[:items].get(:a)).to be_a(BigDecimal)
 
       @db[:items].update(a: BigDecimal('100.1'))
       expect(@db[:items].select_map(:a)).to eq [BigDecimal('100.1')]
-      expect(@db[:items].get(:a)).to be_kind_of(BigDecimal)
+      expect(@db[:items].get(:a)).to be_a(BigDecimal)
     end
 
     it 'handles integer/float date columns as julian date' do
@@ -451,7 +451,7 @@ describe 'SQLite dataset' do
   end
 
   it 'supports #explain' do
-    expect(DB[:test].explain).to be_kind_of(String)
+    expect(DB[:test].explain).to be_a(String)
   end
 end
 
