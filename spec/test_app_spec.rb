@@ -1,4 +1,4 @@
-RSpec.describe 'test_app', type: :feature, retry: 10 do
+RSpec.describe 'test_app', retry: 10, type: :feature do
   subject { page }
 
   before do
@@ -11,7 +11,7 @@ RSpec.describe 'test_app', type: :feature, retry: 10 do
 
   describe 'initialized app' do
     describe 'body' do
-      subject { page.find(:css, '#stdout') }
+      subject { page.find_by_id('stdout') }
 
       it { is_expected.to have_text('examples, 0 failures, ') }
     end

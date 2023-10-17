@@ -60,7 +60,7 @@ module Sequel
 
     integer = Object.new
     def integer.call(s)
-      s ? s.to_i : nil
+      s&.to_i
     end
 
     float = Object.new
@@ -241,7 +241,7 @@ module Sequel
               result = conn.exec(sql)
               # fetch table names
               tables = conn.exec("select name from sqlite_master where type='table'")[:result].first['values']
-              target_table = tables.map(&:first).find { |n| sql.include?("FROM \`#{n}\`") }
+              target_table = tables.map(&:first).find { |n| sql.include?("FROM `#{n}`") }
               if target_table
                 types_result = conn.exec("pragma table_info('#{target_table}')")
                 result[:types] = types_result[:result].first['values'].to_h { |e| [e[1], e[2]] }
@@ -438,7 +438,7 @@ module Sequel
       # Quote the string using the adapter class method.
       def literal_string_append(sql, v)
         # sql << "'" << ::SQLite3::Database.quote(v) << "'"
-        sql << "'" << v.gsub(/'/, "''") << "'"
+        sql << "'" << v.gsub("'", "''") << "'"
       end
 
       def bound_variable_modules

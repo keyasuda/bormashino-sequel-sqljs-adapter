@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    bormashino (0.1.11)
+    bormashino (0.2.0)
       json_pure (~> 2.6, >= 2.6.1)
       os (~> 1.1, >= 1.1.4)
       ruby2_keywords (= 0.0.4)
@@ -11,22 +11,22 @@ GEM
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     os (1.1.4)
-    rack (2.2.5)
+    rack (2.2.8)
     rack-protection (2.2.4)
       rack
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
       rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.1)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.1)
+    rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     ruby2_keywords (0.0.4)
     sequel (5.63.0)
     sinatra (2.2.4)
@@ -34,18 +34,18 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.4)
       tilt (~> 2.0)
-    tilt (2.0.11)
+    tilt (2.3.0)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bormashino (~> 0.1.9)
+  bormashino (~> 0.2.0)
   json_pure (~> 2.6, >= 2.6.1)
   rspec (~> 3.11)
   ruby2_keywords (= 0.0.4)
-  sequel (~> 5.60)
+  sequel (= 5.63.0)
   sinatra
 
 BUNDLED WITH
-   2.4.0.dev
+   2.4.1
