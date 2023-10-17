@@ -19,7 +19,7 @@
     "node-notifier": "^10.0.1"
   },
   "dependencies": {
-    "bormashino": "^0.1.15",
+    "bormashino": "^0.2.0",
     "sql.js": "^1.8.0"
   }
 }

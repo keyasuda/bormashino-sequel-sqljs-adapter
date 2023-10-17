@@ -84,3 +84,6 @@ Naming/AccessorMethodName:
 
 Style/GuardClause:
   Enabled: false
+
+Rails/FindEach:
+  Enabled: false
