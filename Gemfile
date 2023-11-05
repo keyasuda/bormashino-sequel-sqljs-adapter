@@ -13,6 +13,6 @@ gem 'rspec', '>= 3.0.0'
 
 gem 'capybara', '~> 3.38', '>= 3.38.0'
 gem 'capybara-screenshot', '~> 1.0', '>= 1.0.26'
-gem 'cuprite', '~> 0.14.3'
+gem 'cuprite', '~> 0.15.0'
 gem 'pry', '~> 0.14.1'
 gem 'rspec-retry', '~> 0.6.2'
